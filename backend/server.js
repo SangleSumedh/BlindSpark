@@ -8,10 +8,10 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*", // Adjust for your devtunnels URLs
+    origin: "*", // During debug, keep it open
     methods: ["GET", "POST"],
-    credentials: true,
   },
+  transports: ["websocket", "polling"], // Allow both for better compatibility
 });
 
 // The queue of users looking for a match
